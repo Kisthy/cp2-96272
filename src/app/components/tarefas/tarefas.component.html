@@ -1,0 +1,27 @@
+<div class="container">
+
+  <form [formGroup]="tarefaForm" (ngSubmit)="inserir()">
+    <p>
+      Tarefa: <input type="text" formControlName="nomeTarefa" />
+    </p>
+    <p>
+      Descrição: <input type="text" formControlName="descricao" />
+    </p>
+    <p>
+      Data de Entrega: <input type="text" formControlName="dataLimite" />
+    </p>
+    <button class="btn" type="submit">Enviar</button>
+  
+  </form>
+  
+  <div class="list">
+    <h2>Lista Tarefas</h2>
+    <ul>
+      @for (item of tarefas; track $index){
+        <li>  {{item.id}} - {{item.nomeTarefa}} - {{item.descricao}} - {{item.dataLimite}}
+          <input class="btn" type="button" value="remover" (click)="remover(item.id)">
+        </li>
+      }
+    </ul>
+  </div>
+</div>
